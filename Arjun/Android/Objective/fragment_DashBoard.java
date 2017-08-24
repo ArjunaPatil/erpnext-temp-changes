@@ -179,25 +179,27 @@ public class fragment_DashBoard extends Fragment implements popup_todays_objecti
             restService.getService().getObjective(sid, jsonArray, Filters, new Callback<JsonElement>() {
                 @Override
                 public void success(JsonElement jsonElement, Response response) {
+                    try {
+                        JsonObject j1 = jsonElement.getAsJsonObject();
+                        JsonArray j22 = j1.getAsJsonArray("data");
 
-                    JsonObject j1 = jsonElement.getAsJsonObject();
-                    JsonArray j22 = j1.getAsJsonArray("data");
+                        if (j22.size() > 0) {
+                            Gson gson = new Gson();
+                            Type type = new TypeToken<List<POJO_objective>>() {
+                            }.getType();
+                            List<POJO_objective> POJO = gson.fromJson(j22, type);
 
-                    if (j22.size() > 0) {
-                        Gson gson = new Gson();
-                        Type type = new TypeToken<List<POJO_objective>>() {
-                        }.getType();
-                        List<POJO_objective> POJO = gson.fromJson(j22, type);
+                            if (POJO.size() > 0) {
 
-                        if (POJO.size() > 0) {
+                                POJO_objective firstA = POJO.get(0);
+                                tv_todays_objective.setText(firstA.getObjective().toString());
+                            }
+                        } else {
 
-                            POJO_objective firstA = POJO.get(0);
-                            tv_todays_objective.setText(firstA.getObjective().toString());
                         }
-                    } else {
-
+                    } catch (Exception ex) {
+                        Toast.makeText(getContext(), ex.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
-
                 }
 
                 @Override
