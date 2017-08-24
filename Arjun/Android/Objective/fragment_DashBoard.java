@@ -43,7 +43,8 @@ public class fragment_DashBoard extends Fragment implements popup_todays_objecti
     
     public void load_events() {
         try {
-            tv_todays_objective = (TextView) getView().findViewById(R.id.tv_todays_objective);
+            tv_todays_objective = (TextView) getView().findViewById(R.id.tv_todays_objective);            
+
             ////Objective Section Start
 
             CustomImageButton btn_objective_add = (CustomImageButton) getView().findViewById(R.id.btn_objective_add);
@@ -59,10 +60,10 @@ public class fragment_DashBoard extends Fragment implements popup_todays_objecti
                 @Override
                 public void onClick(View v) {
                     try {
-                        SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                        /*SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                         String Designation = app_preferences.getString("designation", "default");
 
-                        if ((Designation.equals("ABM")) || (Designation.equals("RBM")) || (Designation.equals("CRM")) || (Designation.equals("ZBM")) || (Designation.equals("SM")) || ((Designation.equals("NBM")) || (Designation.equals("Head of Marketing and Sales")) || (Designation.equals("HR Manager")))) {
+                        if ((Designation.equals("ABM")) || (Designation.equals("RBM")) || (Designation.equals("CRM")) || (Designation.equals("ZBM")) || (Designation.equals("SM")) || ((Designation.equals("NBM")) || (Designation.equals("Head of Marketing and Sales")) || (Designation.equals("HR Manager"))|| (Designation.equals("Administrator")))) {
 
                             Fragment frag = new fragment_objective_list();
                             FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -75,15 +76,14 @@ public class fragment_DashBoard extends Fragment implements popup_todays_objecti
 
                         } else {
                             Toast.makeText(getContext(), "ACCESS DENIEDED...", Toast.LENGTH_SHORT).show();
-                        }
+                        }*/
                     } catch (Exception ex) {
                         Toast.makeText(getContext(), ex.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
                 }
             });
 
-            ////Objective Section END
-            
+            ////Objective Section END           
         } catch (Exception ex) {
             Toast.makeText(getContext(), ex.getMessage().toString(), Toast.LENGTH_LONG).show();
         }
